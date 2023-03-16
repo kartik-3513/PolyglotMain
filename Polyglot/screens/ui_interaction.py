@@ -86,7 +86,7 @@ class Ui_player_window(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.english_edit.sizePolicy().hasHeightForWidth())
         self.english_edit.setSizePolicy(sizePolicy)
-        self.english_edit.setMaximumSize(QtCore.QSize(16777215, 100))
+        self.english_edit.setMaximumSize(QtCore.QSize(16777215, 200))
         self.english_edit.setStyleSheet("font: 12pt \"MS Reference Sans Serif\";\n"
 "color: white;")
         self.english_edit.setPlainText("")
@@ -105,7 +105,7 @@ class Ui_player_window(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.hindi_edit.sizePolicy().hasHeightForWidth())
         self.hindi_edit.setSizePolicy(sizePolicy)
-        self.hindi_edit.setMaximumSize(QtCore.QSize(16777215, 100))
+        self.hindi_edit.setMaximumSize(QtCore.QSize(16777215, 200))
         self.hindi_edit.setStyleSheet("font: 12pt \"MS Reference Sans Serif\";\n"
 "color: white;")
         self.hindi_edit.setObjectName("hindi_edit")
@@ -170,7 +170,7 @@ class Ui_player_window(object):
         self.analyse_b.setFlat(False)
         self.analyse_b.setObjectName("analyse_b")
         self.horizontalLayout_3.addWidget(self.analyse_b)
-        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        spacerItem4 = QtWidgets.QSpacerItem(80, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem4)
         self.verticalLayout_6.addLayout(self.horizontalLayout_3)
         self.gridLayout_3.addLayout(self.verticalLayout_6, 0, 1, 2, 1)

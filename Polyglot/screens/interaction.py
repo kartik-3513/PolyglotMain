@@ -32,7 +32,7 @@ class InteractionWindow(QMainWindow):
         plot.getAxis('bottom').setPen(size=20, color="black")
 
         self.embeddings = None
-        self.sentences = []
+        self.sentences = {}
 
     def onBack(self):
         this_widget = shared.stack_w.currentWidget()
@@ -40,10 +40,12 @@ class InteractionWindow(QMainWindow):
         this_widget.deleteLater()
 
     def prepareSentences(self):
-        en_text = self.english_edit.toPlainText()
+        en_text = self.english_edit.toPlainText().splitlines()
+        hi_text = self.hindi_edit.toPlainText().splitlines()
         print(en_text)
-        self.sentences.append(en_text)
-        self.sentences.append(self.hindi_edit.toPlainText())
+        print(hi_text)
+        self.sentences['en'] = en_text
+        self.sentences['hi'] = hi_text
 
     def analyse(self):
         self.thread = QThread()
@@ -76,9 +78,9 @@ class InteractionWindow(QMainWindow):
         plotItem = self.graphWidget.getPlotItem()
         en_scatter = pg.ScatterPlotItem(size=20)
         hi_scatter = pg.ScatterPlotItem(size=20)
-        brushes = [pg.mkBrush(30, 255, 35, 255)]
-        en_spots = [{'pos': self.embeddings[0], 'data': 1, 'brush':brushes[0], 'symbol':'o'}]
-        hi_spots = [{'pos': self.embeddings[1], 'data': 1, 'brush':brushes[0], 'symbol':'t'}]
+        n = len(self.embeddings['en'])
+        en_spots = [{'pos': self.embeddings['en'][i], 'data': 1, 'brush':pg.intColor(i, n), 'symbol':'o'} for i in range(n)]
+        hi_spots = [{'pos': self.embeddings['hi'][i], 'data': 1, 'brush':pg.intColor(i, n), 'symbol':'t'} for i in range(n)]
         en_scatter.addPoints(en_spots, name = "English", symbol = 'o')
         hi_scatter.addPoints(hi_spots, name = "Hindi", symbol = 't')
         plotItem.addItem(en_scatter)

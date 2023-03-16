@@ -2,7 +2,7 @@ from PyQt5.QtCore import QObject, pyqtSignal
 from embedder import embedder_object
 class Worker(QObject):
     
-    processed = pyqtSignal(list)
+    processed = pyqtSignal(dict)
     finished = pyqtSignal()
     
     def setInputSentences(self, sentences):
