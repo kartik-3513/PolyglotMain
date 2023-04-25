@@ -1,3 +1,5 @@
-from embedder.embedder import Embedder
+from embedder.sentenceEmbedder import SentenceEmbedder
+from embedder.documentEmbedder import DocumentEmbedder
 
-embedder_object = Embedder("Polyglot/embedder/pca_en.pkl","Polyglot/embedder/pca_hi.pkl")
+sentence_embedder_object = SentenceEmbedder()
+document_embedder_object = DocumentEmbedder()
