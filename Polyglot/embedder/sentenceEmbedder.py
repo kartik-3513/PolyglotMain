@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.decomposition import PCA
 from sentence_transformers import SentenceTransformer
+import torch
 
 class Sentence:
     emb = None
@@ -15,7 +16,12 @@ class SentenceEmbedder:
         pass
 
     def embed(self, inputSentences, model):
-        model = SentenceTransformer(model, device="cuda")
+
+        if torch.cuda.is_available():
+            model = SentenceTransformer(model, device = 'cuda')
+        else:
+            model = SentenceTransformer(model)
+
         sentences = []
 
         for lang, sen_list in inputSentences.items():
